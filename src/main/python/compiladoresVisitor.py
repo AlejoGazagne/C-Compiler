@@ -1,6 +1,6 @@
-# Generated from /home/alejo/Escritorio/DHS2023-master/src/main/python/compiladores.g4 by ANTLR 4.9.2
+# Generated from /home/alejo/Escritorio/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
-if __name__ is not None and "." in __name__:
+if "." in __name__:
     from .compiladoresParser import compiladoresParser
 else:
     from compiladoresParser import compiladoresParser
@@ -14,8 +14,8 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#update.
-    def visitUpdate(self, ctx:compiladoresParser.UpdateContext):
+    # Visit a parse tree produced by compiladoresParser#tdato.
+    def visitTdato(self, ctx:compiladoresParser.TdatoContext):
         return self.visitChildren(ctx)
 
 
@@ -84,8 +84,78 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#opal.
-    def visitOpal(self, ctx:compiladoresParser.OpalContext):
+    # Visit a parse tree produced by compiladoresParser#opar.
+    def visitOpar(self, ctx:compiladoresParser.OparContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#expresion.
+    def visitExpresion(self, ctx:compiladoresParser.ExpresionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#exp.
+    def visitExp(self, ctx:compiladoresParser.ExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#termino.
+    def visitTermino(self, ctx:compiladoresParser.TerminoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#term.
+    def visitTerm(self, ctx:compiladoresParser.TermContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#factor.
+    def visitFactor(self, ctx:compiladoresParser.FactorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#oplo.
+    def visitOplo(self, ctx:compiladoresParser.OploContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#expresionLo.
+    def visitExpresionLo(self, ctx:compiladoresParser.ExpresionLoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#expLo.
+    def visitExpLo(self, ctx:compiladoresParser.ExpLoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#terminoLo.
+    def visitTerminoLo(self, ctx:compiladoresParser.TerminoLoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#termLo.
+    def visitTermLo(self, ctx:compiladoresParser.TermLoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#factorLo.
+    def visitFactorLo(self, ctx:compiladoresParser.FactorLoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#comp.
+    def visitComp(self, ctx:compiladoresParser.CompContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#callFuncion.
+    def visitCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#defFuncion.
+    def visitDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
         return self.visitChildren(ctx)
 
 
