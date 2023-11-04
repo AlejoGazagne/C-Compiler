@@ -287,6 +287,16 @@ public interface compiladoresListener extends ParseTreeListener {
 	 */
 	void exitComp(compiladoresParser.CompContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link compiladoresParser#prototipeFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrototipeFuncion(compiladoresParser.PrototipeFuncionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link compiladoresParser#prototipeFuncion}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrototipeFuncion(compiladoresParser.PrototipeFuncionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link compiladoresParser#callFuncion}.
 	 * @param ctx the parse tree
 	 */
@@ -306,4 +316,44 @@ public interface compiladoresListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitDefFuncion(compiladoresParser.DefFuncionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link compiladoresParser#listaParEnv}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaParEnv(compiladoresParser.ListaParEnvContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link compiladoresParser#listaParEnv}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaParEnv(compiladoresParser.ListaParEnvContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link compiladoresParser#parEnv}.
+	 * @param ctx the parse tree
+	 */
+	void enterParEnv(compiladoresParser.ParEnvContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link compiladoresParser#parEnv}.
+	 * @param ctx the parse tree
+	 */
+	void exitParEnv(compiladoresParser.ParEnvContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link compiladoresParser#listaParRec}.
+	 * @param ctx the parse tree
+	 */
+	void enterListaParRec(compiladoresParser.ListaParRecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link compiladoresParser#listaParRec}.
+	 * @param ctx the parse tree
+	 */
+	void exitListaParRec(compiladoresParser.ListaParRecContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link compiladoresParser#parRec}.
+	 * @param ctx the parse tree
+	 */
+	void enterParRec(compiladoresParser.ParRecContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link compiladoresParser#parRec}.
+	 * @param ctx the parse tree
+	 */
+	void exitParRec(compiladoresParser.ParRecContext ctx);
 }

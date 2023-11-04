@@ -149,6 +149,11 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by compiladoresParser#prototipeFuncion.
+    def visitPrototipeFuncion(self, ctx:compiladoresParser.PrototipeFuncionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by compiladoresParser#callFuncion.
     def visitCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
         return self.visitChildren(ctx)
@@ -156,6 +161,26 @@ class compiladoresVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladoresParser#defFuncion.
     def visitDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#listaParEnv.
+    def visitListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#parEnv.
+    def visitParEnv(self, ctx:compiladoresParser.ParEnvContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#listaParRec.
+    def visitListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#parRec.
+    def visitParRec(self, ctx:compiladoresParser.ParRecContext):
         return self.visitChildren(ctx)
 
 

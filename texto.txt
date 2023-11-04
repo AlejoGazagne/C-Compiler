@@ -1,0 +1,10 @@
+codigo intermedio
+No depende del hardware, pseudo ensablador independiente del hardware. 
+Optimizaciones que sirben para cualquier lenguaje o arquitectura
+
+
+
+Visitor
+Que tengo que hacer en el visitor??
+
+codigo de tres d

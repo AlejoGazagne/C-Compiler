@@ -260,6 +260,15 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by compiladoresParser#prototipeFuncion.
+    def enterPrototipeFuncion(self, ctx:compiladoresParser.PrototipeFuncionContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#prototipeFuncion.
+    def exitPrototipeFuncion(self, ctx:compiladoresParser.PrototipeFuncionContext):
+        pass
+
+
     # Enter a parse tree produced by compiladoresParser#callFuncion.
     def enterCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
         pass
@@ -275,6 +284,42 @@ class compiladoresListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladoresParser#defFuncion.
     def exitDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listaParEnv.
+    def enterListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listaParEnv.
+    def exitListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#parEnv.
+    def enterParEnv(self, ctx:compiladoresParser.ParEnvContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#parEnv.
+    def exitParEnv(self, ctx:compiladoresParser.ParEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listaParRec.
+    def enterListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listaParRec.
+    def exitListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#parRec.
+    def enterParRec(self, ctx:compiladoresParser.ParRecContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#parRec.
+    def exitParRec(self, ctx:compiladoresParser.ParRecContext):
         pass
 
 

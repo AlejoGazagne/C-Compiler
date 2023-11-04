@@ -60,15 +60,16 @@ instruccion : declaracion PYC
     | while_stmt
     | defFuncion PYC
     | callFuncion PYC
+    | prototipeFuncion PYC
     | bloque ;
 
 declaracion : tdato ID definicion lista_var;
 
-definicion : EQ opar 
+definicion : EQ opar //ver
     |
     ;
 
-asignacion : ID EQ oplo;
+asignacion : ID EQ oplo; //ver
 
 bloque : LLA instrucciones LLC ;
 
@@ -135,9 +136,22 @@ factorLo: factor
 comp: opar log opar
     | comp log comp;
 
-callFuncion: ID PA (NUMERO | ID) PC;
-defFuncion: tdato ID PA(tdato ID | tdato);
+prototipeFuncion: tdato ID PA parRec PC ;
+callFuncion: ID PA parEnv PC;
+defFuncion: tdato ID PA parRec PC bloque;
 
-// listPar: par listPar;
+listaParEnv: COMA expresion listaParEnv
+    | 
+    ;
 
-// par: 
+parEnv: expresion listaParEnv
+    |
+    ;
+
+listaParRec: COMA tdato ID listaParRec
+    |
+    ;
+
+parRec: tdato ID listaParRec
+    |
+    ;
