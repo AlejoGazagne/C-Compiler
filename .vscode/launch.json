@@ -7,7 +7,6 @@
       "request": "launch",
       "grammar": "${file}",
       "input": "input/decl.c",
-      //"input": "input/entrada.txt",
       "startRule": "programa",
       "printParseTree": true,
       "visualParseTree": true
@@ -39,8 +38,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/alejo/Escritorio/DHS2023-master/input",
-      "program": "/home/alejo/Escritorio/DHS2023-master/input/build/Debug/outDebug",
+      "cwd": "/home/alejo/Escritorio/Compilador/input",
+      "program": "/home/alejo/Escritorio/Compilador/input/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

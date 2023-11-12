@@ -11,25 +11,30 @@ LLC : '}' ;
 PYC : ';' ;
 COMA : ',' ;
 
-ST: '<';
+MAS : '+';
+MENOS : '-';
+MOD : '%';
+MUL : '*';
+DIV : '/';
+
+LT: '<';
 GT: '>';
+LE: '<='; 
+GE: '>=';
 EQQ: '==';
-DIFF: '!=';
+NEQ: '!=';
 
 AND: '&&';
-OR: '||';
+ORR: '||';
 
-M1: ID+ '++';
-D1 : ID+ '--';
-M11 : '++'ID+; 
-D11 : '--'ID+; 
-
-log : ST | GT | EQQ | DIFF;
-update : M1 | M11 | D1 | D11; 
+log : LT | GT | LE | GE | EQQ | NEQ;
 
 NUMERO : DIGITO+ ;
 
-TDATO : 'int' | 'double' ;
+INT : 'int';
+DOUBLE : 'double';
+tdato: INT | DOUBLE;
+
 WHILE : 'while' ;
 IF : 'if';
 ELSE : 'else';
@@ -44,7 +49,8 @@ OTRO : . ;
 programa : instrucciones EOF ;
 
 instrucciones : instruccion instrucciones
-    | ;
+    | 
+    ;
 
 instruccion : declaracion PYC
     | asignacion PYC
@@ -52,15 +58,18 @@ instruccion : declaracion PYC
     | if_stmt
     | for_stmt
     | while_stmt
+    | defFuncion
+    | callFuncion PYC
+    | prototipeFuncion PYC
     | bloque ;
 
-declaracion : TDATO ID definicion lista_var;
+declaracion : tdato ID definicion lista_var;
 
-definicion : (EQ NUMERO) 
-    | ;
+definicion : EQ opal //ver
+    |
+    ;
 
-asignacion : (ID EQ NUMERO)
-    | (ID EQ ID);
+asignacion : ID EQ opal; //ver
 
 bloque : LLA instrucciones LLC ;
 
@@ -70,7 +79,8 @@ retornar : RETURN ID
     | RETURN declaracion;
 
 lista_var : COMA ID definicion lista_var
-    | ;
+    | 
+    ;
 
 while_stmt : WHILE PA opal PC instruccion;
 
@@ -79,15 +89,62 @@ if_stmt : IF PA opal PC instruccion
 
 else_stmt : ELSE bloque;
 
-for_stmt : FOR PA (declaracion | asignacion) PYC opal PYC update PC instruccion;
+for_stmt : FOR PA asignacion PYC opal PYC asignacion PC instruccion;
 
-opal : (ID log ID | ID log NUMERO | NUMERO log ID | NUMERO log NUMERO)
-    | (ID log ID | ID log NUMERO | NUMERO log ID | NUMERO log NUMERO) AND opal;
-// opal : comp 
-//     | comp AND opal 
-//     | comp OR opal;
+opal : expresionl;
 
-// comp : ID log ID
-//     | ID log NUMERO
-//     | NUMERO log NUMERO
-//     | NUMERO log ID;
+expresionl : terminol expl;
+
+expl : ORR terminol expl
+     |
+     ;
+
+terminol : expresion terml 
+    | expresion log expresion terml;
+    
+terml : AND expresionl terml
+      |
+      ;
+
+expresion : termino exp;
+
+exp : MAS   termino exp
+    | MENOS termino exp
+    |
+    ;
+
+termino : factor term ;
+
+term : MUL factor term
+     | DIV factor term    
+     | MOD factor term
+     |
+     ;
+
+factor : ID
+       | NUMERO
+       | callFuncion
+       | MENOS NUMERO
+       | MENOS ID
+       | PA expresionl PC
+       ;
+
+prototipeFuncion: tdato ID PA parRec PC ;
+callFuncion: ID PA parEnv PC;
+defFuncion: tdato ID PA parRec PC bloque;
+
+listaParEnv: COMA expresion listaParEnv
+    | 
+    ;
+
+parEnv: expresion listaParEnv
+    |
+    ;
+
+listaParRec: COMA tdato ID listaParRec
+    |
+    ;
+
+parRec: tdato ID listaParRec
+    |
+    ;

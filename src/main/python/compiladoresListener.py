@@ -1,6 +1,6 @@
-# Generated from /home/alejo/Escritorio/DHS2023-master/src/main/python/compiladores.g4 by ANTLR 4.9.2
+# Generated from /home/alejo/Escritorio/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
-if __name__ is not None and "." in __name__:
+if "." in __name__:
     from .compiladoresParser import compiladoresParser
 else:
     from compiladoresParser import compiladoresParser
@@ -17,12 +17,12 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by compiladoresParser#update.
-    def enterUpdate(self, ctx:compiladoresParser.UpdateContext):
+    # Enter a parse tree produced by compiladoresParser#tdato.
+    def enterTdato(self, ctx:compiladoresParser.TdatoContext):
         pass
 
-    # Exit a parse tree produced by compiladoresParser#update.
-    def exitUpdate(self, ctx:compiladoresParser.UpdateContext):
+    # Exit a parse tree produced by compiladoresParser#tdato.
+    def exitTdato(self, ctx:compiladoresParser.TdatoContext):
         pass
 
 
@@ -149,6 +149,150 @@ class compiladoresListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladoresParser#opal.
     def exitOpal(self, ctx:compiladoresParser.OpalContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#expresionl.
+    def enterExpresionl(self, ctx:compiladoresParser.ExpresionlContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#expresionl.
+    def exitExpresionl(self, ctx:compiladoresParser.ExpresionlContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#expl.
+    def enterExpl(self, ctx:compiladoresParser.ExplContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#expl.
+    def exitExpl(self, ctx:compiladoresParser.ExplContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#terminol.
+    def enterTerminol(self, ctx:compiladoresParser.TerminolContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#terminol.
+    def exitTerminol(self, ctx:compiladoresParser.TerminolContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#terml.
+    def enterTerml(self, ctx:compiladoresParser.TermlContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#terml.
+    def exitTerml(self, ctx:compiladoresParser.TermlContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#expresion.
+    def enterExpresion(self, ctx:compiladoresParser.ExpresionContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#expresion.
+    def exitExpresion(self, ctx:compiladoresParser.ExpresionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#exp.
+    def enterExp(self, ctx:compiladoresParser.ExpContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#exp.
+    def exitExp(self, ctx:compiladoresParser.ExpContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#termino.
+    def enterTermino(self, ctx:compiladoresParser.TerminoContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#termino.
+    def exitTermino(self, ctx:compiladoresParser.TerminoContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#term.
+    def enterTerm(self, ctx:compiladoresParser.TermContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#term.
+    def exitTerm(self, ctx:compiladoresParser.TermContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#factor.
+    def enterFactor(self, ctx:compiladoresParser.FactorContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#factor.
+    def exitFactor(self, ctx:compiladoresParser.FactorContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#prototipeFuncion.
+    def enterPrototipeFuncion(self, ctx:compiladoresParser.PrototipeFuncionContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#prototipeFuncion.
+    def exitPrototipeFuncion(self, ctx:compiladoresParser.PrototipeFuncionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#callFuncion.
+    def enterCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#callFuncion.
+    def exitCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#defFuncion.
+    def enterDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#defFuncion.
+    def exitDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listaParEnv.
+    def enterListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listaParEnv.
+    def exitListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#parEnv.
+    def enterParEnv(self, ctx:compiladoresParser.ParEnvContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#parEnv.
+    def exitParEnv(self, ctx:compiladoresParser.ParEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listaParRec.
+    def enterListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listaParRec.
+    def exitListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#parRec.
+    def enterParRec(self, ctx:compiladoresParser.ParRecContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#parRec.
+    def exitParRec(self, ctx:compiladoresParser.ParRecContext):
         pass
 
 
