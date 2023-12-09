@@ -1,10 +1,20 @@
-codigo intermedio
-No depende del hardware, pseudo ensablador independiente del hardware. 
-Optimizaciones que sirben para cualquier lenguaje o arquitectura
+int pruebaFuncion(int a,int b);
 
+{
+    int i, h = 5;
+    i = 5;
+    h = 1;
+    {
+        int t = 0;
+        int f = 4;
+        t = pruebaFuncion(t, f);
+        {
+            double i = 1;
+        }
+    }
+}
 
-
-Visitor
-Que tengo que hacer en el visitor??
-
-codigo de tres d
+int pruebaFuncion(int a,int b){
+    int suma = a + b;
+    return suma;
+}

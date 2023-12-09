@@ -58,14 +58,14 @@ instruccion : declaracion PYC
     | if_stmt
     | for_stmt
     | while_stmt
-    | defFuncion PYC
+    | defFuncion
     | callFuncion PYC
     | prototipeFuncion PYC
     | bloque ;
 
 declaracion : tdato ID definicion lista_var;
 
-definicion : EQ opar //ver
+definicion : EQ opar 
     |
     ;
 

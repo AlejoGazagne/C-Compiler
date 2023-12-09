@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 class ID(ABC):
     def __init__(self, nombre, tDato, inicializado = False, accedido = False):
@@ -43,8 +43,8 @@ class Variable(ID):
     pass
     
 class Funcion(ID):
-    def __init__(self, nombre, tDato, args, inicializado = False, accedido = False):
-        super().__init__(self, nombre, tDato)
+    def __init__(self, nombre, tDato, args):
+        super().__init__(nombre, tDato)
         self._args = list(args)
         
     @property
