@@ -1,4 +1,4 @@
-# Generated from /home/alejo/Escritorio/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
+# Generated from /home/alejo/Escritorio/Aritmeticas y logicas andando/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladoresParser import compiladoresParser
@@ -149,23 +149,23 @@ class compiladoresVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#listaParEnv.
-    def visitListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+    # Visit a parse tree produced by compiladoresParser#argRec.
+    def visitArgRec(self, ctx:compiladoresParser.ArgRecContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#parEnv.
-    def visitParEnv(self, ctx:compiladoresParser.ParEnvContext):
+    # Visit a parse tree produced by compiladoresParser#listaArgRec.
+    def visitListaArgRec(self, ctx:compiladoresParser.ListaArgRecContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#listaParRec.
-    def visitListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+    # Visit a parse tree produced by compiladoresParser#argEnv.
+    def visitArgEnv(self, ctx:compiladoresParser.ArgEnvContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by compiladoresParser#parRec.
-    def visitParRec(self, ctx:compiladoresParser.ParRecContext):
+    # Visit a parse tree produced by compiladoresParser#listaArgEnv.
+    def visitListaArgEnv(self, ctx:compiladoresParser.ListaArgEnvContext):
         return self.visitChildren(ctx)
 
 

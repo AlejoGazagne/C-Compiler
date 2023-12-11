@@ -35,9 +35,9 @@ INT : 'int';
 DOUBLE : 'double';
 tdato: INT | DOUBLE;
 
-WHILE : 'while' ;
 IF : 'if';
 ELSE : 'else';
+WHILE : 'while' ;
 FOR : 'for';
 RETURN : 'return';
 
@@ -65,18 +65,15 @@ instruccion : declaracion PYC
 
 declaracion : tdato ID definicion lista_var;
 
-definicion : EQ opal //ver
+definicion : EQ opal 
     |
     ;
 
-asignacion : ID EQ opal; //ver
+asignacion : ID EQ opal; 
 
 bloque : LLA instrucciones LLC ;
 
-retornar : RETURN ID
-    | RETURN NUMERO
-    | RETURN asignacion
-    | RETURN declaracion;
+retornar : RETURN opal;
 
 lista_var : COMA ID definicion lista_var
     | 
@@ -129,22 +126,22 @@ factor : ID
        | PA expresionl PC
        ;
 
-prototipeFuncion: tdato ID PA parRec PC ;
-callFuncion: ID PA parEnv PC;
-defFuncion: tdato ID PA parRec PC bloque;
+prototipeFuncion: tdato ID PA argRec PC ;
+callFuncion: ID PA argEnv PC;
+defFuncion: tdato ID PA argRec PC bloque;
 
-listaParEnv: COMA expresion listaParEnv
+argRec: tdato ID listaArgRec
+    |
+    ;
+
+listaArgRec: COMA tdato ID listaArgRec
+    |
+    ;
+
+argEnv: expresion listaArgEnv
+    |
+    ;
+
+listaArgEnv: COMA expresion listaArgEnv
     | 
-    ;
-
-parEnv: expresion listaParEnv
-    |
-    ;
-
-listaParRec: COMA tdato ID listaParRec
-    |
-    ;
-
-parRec: tdato ID listaParRec
-    |
     ;

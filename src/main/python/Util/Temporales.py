@@ -1,9 +1,9 @@
 class Temporales:
 
     def __init__(self):
-        self.counter = 0
+        self.contador = 0
 
     def next_temporal(self):
-        temporal = f't{self.counter}'
-        self.counter += 1
+        temporal = f't{self.contador}'
+        self.contador += 1
         return temporal

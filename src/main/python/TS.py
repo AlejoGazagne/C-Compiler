@@ -20,6 +20,10 @@ class TS():
         for contexto in TS._pilaCtx[-1::-1]:
             if id in contexto.simbolos:
                 return contexto
+            
+    def buscarGlobal(self, id):
+        if id in TS._pilaCtx[0].simbolos:
+            return TS._pilaCtx[0]
         
     def agregar(self, id):
         TS._pilaCtx[-1].agregarSimbolo(id)

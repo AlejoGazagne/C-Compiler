@@ -1,4 +1,4 @@
-# Generated from /home/alejo/Escritorio/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
+# Generated from /home/alejo/Escritorio/Aritmeticas y logicas andando/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladoresParser import compiladoresParser
@@ -260,39 +260,39 @@ class compiladoresListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by compiladoresParser#listaParEnv.
-    def enterListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
+    # Enter a parse tree produced by compiladoresParser#argRec.
+    def enterArgRec(self, ctx:compiladoresParser.ArgRecContext):
         pass
 
-    # Exit a parse tree produced by compiladoresParser#listaParEnv.
-    def exitListaParEnv(self, ctx:compiladoresParser.ListaParEnvContext):
-        pass
-
-
-    # Enter a parse tree produced by compiladoresParser#parEnv.
-    def enterParEnv(self, ctx:compiladoresParser.ParEnvContext):
-        pass
-
-    # Exit a parse tree produced by compiladoresParser#parEnv.
-    def exitParEnv(self, ctx:compiladoresParser.ParEnvContext):
+    # Exit a parse tree produced by compiladoresParser#argRec.
+    def exitArgRec(self, ctx:compiladoresParser.ArgRecContext):
         pass
 
 
-    # Enter a parse tree produced by compiladoresParser#listaParRec.
-    def enterListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+    # Enter a parse tree produced by compiladoresParser#listaArgRec.
+    def enterListaArgRec(self, ctx:compiladoresParser.ListaArgRecContext):
         pass
 
-    # Exit a parse tree produced by compiladoresParser#listaParRec.
-    def exitListaParRec(self, ctx:compiladoresParser.ListaParRecContext):
+    # Exit a parse tree produced by compiladoresParser#listaArgRec.
+    def exitListaArgRec(self, ctx:compiladoresParser.ListaArgRecContext):
         pass
 
 
-    # Enter a parse tree produced by compiladoresParser#parRec.
-    def enterParRec(self, ctx:compiladoresParser.ParRecContext):
+    # Enter a parse tree produced by compiladoresParser#argEnv.
+    def enterArgEnv(self, ctx:compiladoresParser.ArgEnvContext):
         pass
 
-    # Exit a parse tree produced by compiladoresParser#parRec.
-    def exitParRec(self, ctx:compiladoresParser.ParRecContext):
+    # Exit a parse tree produced by compiladoresParser#argEnv.
+    def exitArgEnv(self, ctx:compiladoresParser.ArgEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listaArgEnv.
+    def enterListaArgEnv(self, ctx:compiladoresParser.ListaArgEnvContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listaArgEnv.
+    def exitListaArgEnv(self, ctx:compiladoresParser.ListaArgEnvContext):
         pass
 
 
