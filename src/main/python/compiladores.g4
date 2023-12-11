@@ -35,9 +35,10 @@ INT : 'int';
 DOUBLE : 'double';
 tdato: INT | DOUBLE;
 
+
+WHILE : 'while' ;
 IF : 'if';
 ELSE : 'else';
-WHILE : 'while' ;
 FOR : 'for';
 RETURN : 'return';
 
@@ -69,7 +70,7 @@ definicion : EQ opal
     |
     ;
 
-asignacion : ID EQ opal; 
+asignacion : ID EQ opal; //ver
 
 bloque : LLA instrucciones LLC ;
 
