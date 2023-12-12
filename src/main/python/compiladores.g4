@@ -29,7 +29,7 @@ ORR: '||';
 
 log : LT | GT | LE | GE | EQQ | NEQ;
 
-NUMERO : DIGITO+ ;
+NUMERO : DIGITO+ | DIGITO+'.'DIGITO+ ;
 
 INT : 'int';
 DOUBLE : 'double';

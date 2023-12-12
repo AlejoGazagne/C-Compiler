@@ -10,25 +10,57 @@ class miVisitor(compiladoresVisitor):
     _eti = []
     getTemp = Temporales()
     getEti = Etiquetas()
+    esFuncion = False;
 
     def visitPrograma(self, ctx: compiladoresParser.ProgramaContext):
         print("Visitando arbol")
         self.f = open("./output/CodigoIntermedio.txt", "w")
         self.visitChildren(ctx)
         print("Saliendo del arbol")
+        self.f.write("label end")
         self.f.close()
 
     def visitDeclaracion(self, ctx: compiladoresParser.DeclaracionContext):
         # Si es una declaracion sin definicion
         if ctx.getChild(2).getText() != "":
+            if ctx.getChild(2).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChildCount() == 4:
+                self.visitCallFuncion(ctx.getChild(2).getChild(1).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0))
+                self.f.write("pop " + ctx.getChild(1).getText() + "\n")
+                return 
+            
             self.visitDefinicion(ctx.getChild(2))
             self.f.write(ctx.getChild(1).getText() + " = " + self._temp.pop() + "\n")
+        
+        if ctx.getChild(3).getChildCount() != 0:
+            self.visitLista_var(ctx.getChild(3))
+
+    def visitLista_var(self, ctx:compiladoresParser.Lista_varContext):
+        if ctx.getChild(2).getChildCount() != 0:
+            self.visitDefinicion(ctx.getChild(2))
+            self.f.write(ctx.getChild(1).getText() + ' = ' + self._temp.pop() + '\n')
+        
+        if ctx.getChild(3).getChildCount() != 0:
+            self.visitLista_var(ctx.getChild(3))
+
+    def visitRetornar(self, ctx: compiladoresParser.RetornarContext):
+        if self.esFuncion == False:
+            self.f.write("jmp " + "end" + "\n")
+            return
+        if self.esFuncion == True:
+            self.visitOpal(ctx.getChild(1))
+            aux = self._temp.pop()
+            self.f.write("push " + aux + "\n")
 
     def visitDefinicion(self, ctx: compiladoresParser.DefinicionContext):
         return self.visitOpal(ctx.getChild(1))
 
     def visitAsignacion(self, ctx: compiladoresParser.AsignacionContext):
         self.visitOpal(ctx.getChild(2))
+        #verificar si es fun
+        if ctx.getChild(2).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChildCount() == 4:
+            self.visitCallFuncion(ctx.getChild(2).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0).getChild(0))
+            self.f.write("pop " + ctx.getChild(0).getText() + "\n")
+            return 
         self.f.write(ctx.getChild(0).getText() + " = " + self._temp.pop() + "\n")
 
     def visitOpal(self, ctx: compiladoresParser.OpalContext):
@@ -71,69 +103,62 @@ class miVisitor(compiladoresVisitor):
                 self._temp.append(temporal)
 
     def visitExpresion(self, ctx: compiladoresParser.ExpresionContext):
-        #self.visitTermino(ctx.getChild(0))
-        temporal = self.getTemp.next_temporal()
-        self._temp.append(temporal)
-
-        if ctx.getChild(1).getText() != '':
-            #temporal = self.getTemp.next_temporal()
-            self.f.write(temporal + " = " + self.visitTermino(ctx.getChild(0)) + " " + ctx.getChild(1).getChild(0).getText() + " " + self.visitExp(ctx.getChild(1)) + "\n")
-            #self._temp.append(temporal)
-        else: 
-            self.f.write(temporal + " = " + self.visitTermino(ctx.getChild(0)) + "\n")
+        self.visitTermino(ctx.getChild(0))
+        
+        if ctx.getChild(1).getText() != "":
+            aux1 = self._temp.pop()
+            self.visitExp(ctx.getChild(1))
+            aux2 = self._temp.pop()
+            temporal = self.getTemp.next_temporal()
+            self.f.write(temporal + " = " + aux1 + " " + ctx.getChild(1).getChild(0).getText() + " " + aux2 + "\n")
+            self._temp.append(temporal)
 
     def visitExp(self, ctx: compiladoresParser.ExpContext):
-        if ctx.getChild(2).getChildCount() == 0:
-            return self.visitTermino(ctx.getChild(1))
-
-        temporal = self.getTemp.next_temporal()
-        self._temp.append(temporal)
-        self.f.write(temporal + " = " + self.visitTermino(ctx.getChild(1)) + " " + ctx.getChild(2).getChild(0).getText() + " " + self.visitExp(ctx.getChild(2)) + "\n")
-
-        return self._temp.pop()
+        self.visitTermino(ctx.getChild(1))
+        
+        if ctx.getChild(2).getText() != "":
+            aux1 = self._temp.pop()
+            self.visitExp(ctx.getChild(2))
+            temporal = self.getTemp.next_temporal()
+            aux2 = self._temp.pop()
+            self.f.write(temporal + " = " + aux1 + " " + ctx.getChild(2).getChild(0).getText() + " " + aux2 + "\n")
+            self._temp.append(temporal)
 
     def visitTermino(self, ctx: compiladoresParser.TerminoContext):
+        self.visitFactor(ctx.getChild(0))
 
-        temporal = self.getTemp.next_temporal()
-        self._temp.append(temporal)
-
-        if ctx.getChild(0).getChildCount() == 3:
-            self._temp.pop()
-            self.visitExpresionl(ctx.getChild(0).getChild(1))
-
-        if ctx.getChild(0).getChildCount() == 2:
-            self.f.write(temporal + " = " + ctx.getChild(0).getChild(0).getText() + ctx.getChild(0).getChild(1).getText() + "\n")
-
-        if ctx.getChild(0).getChildCount() == 1:
-            self.f.write(temporal + " = " + ctx.getChild(0).getChild(0).getText() + "\n")
-
-        return self.visitTerm(ctx.getChild(1))
+        #Verifico term (si hay alguna mul/div)
+        if ctx.getChild(1).getText() != "":
+            aux1 = self._temp.pop()
+            self.visitTerm(ctx.getChild(1))
+            aux2 = self._temp.pop()
+            temporal = self.getTemp.next_temporal()
+            self.f.write(temporal + " = " + aux1 + " " + ctx.getChild(1).getChild(0).getText() + " " + aux2 + "\n")
+            self._temp.append(temporal)
 
     def visitTerm(self, ctx: compiladoresParser.TermContext):
-        if ctx.getChildCount() == 0:
-            return self._temp.pop()
-
-        temporal = self.getTemp.next_temporal()
-
-        self.f.write(temporal + " = " + self._temp.pop() + " " + ctx.getChild(0).getText() + " " + self.visitFactor(ctx.getChild(1)) + "\n")
-
-        self._temp.append(temporal)
-        return self.visitTerm(ctx.getChild(2))
-
-    def visitFactor(self, ctx: compiladoresParser.FactorContext):
-        if ctx.getChildCount() == 3:
-            self.visitExpresionl(ctx.getChild(1))
-        if ctx.getChildCount() == 2:
-            return ctx.getChild(0).getText() + ctx.getChild(1).getText()
-        else:
-            return ctx.getChild(0).getText()
-    
-    def visitTerml(self, ctx: compiladoresParser.TermlContext):
-        self.visitExpresionl(ctx.getChild(1))
+        self.visitFactor(ctx.getChild(1))
 
         if ctx.getChild(2).getText() != "":
+            self.visitTerm(ctx.getChild(2))
+
+    def visitFactor(self, ctx: compiladoresParser.FactorContext):
+
+        #verifico si es una llamada a una funcion
+        if ctx.getChild(0).getChildCount() == 4:
+            return
+
+        if ctx.getChildCount() == 3:
+            self.visitExpresionl(ctx.getChild(1))
+            return
+        if ctx.getChildCount() == 2:
             temporal = self.getTemp.next_temporal()
-            self.f.write(temporal + " = " + self._temp.pop() + " " + ctx.getChild(2).getChild(0).getText() + " " + self.visitTerml(ctx.getChild(2)) + "\n")
+            self.f.write(temporal + " = " +  + ctx.getChild(0).getText() + " " + ctx.getChild(1).getText() + "\n")
+            self._temp.append(temporal)
+            return 
+        if ctx.getChildCount() == 1:
+            temporal = self.getTemp.next_temporal()
+            self.f.write(temporal + " = " + ctx.getText() + "\n")
             self._temp.append(temporal)
 
     def visitIf_stmt(self, ctx: compiladoresParser.If_stmtContext):
@@ -178,7 +203,36 @@ class miVisitor(compiladoresVisitor):
         self.visitAsignacion(ctx.getChild(6))
         self.f.write("jmp " + et1 + "\n")
         self.f.write("label " + et2 + "\n")
+
+    def visitCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
+        self.visitArgEnv(ctx.getChild(2))
+        etiqueta = self.getEti.etiqueta_funcion(ctx.getChild(0).getText())
+        self.f.write("push " + etiqueta[1] + "\n")
+        self.f.write("jmp " + etiqueta[0] + "\n")
+        self.f.write("label " + etiqueta[1] + "\n")
+    
+    def visitArgEnv(self, ctx: compiladoresParser.ArgEnvContext):
+        argumentos = ctx.getText().split(",")
+
+        for arg in argumentos:
+            self.f.write("push " + arg + "\n")
+
+    def visitDefFuncion(self, ctx:compiladoresParser.DefFuncionContext):
+        if ctx.getChild(1).getText() == "main":
+            self.visitBloque(ctx.getChild(5))
+            return
         
+        nombreFun = ctx.getChild(1).getText()
+        et = self.getEti.funciones[nombreFun]
+        
+        self.f.write("label " + et[0] + "\n")
+        self.esFuncion = True 
+        list = Utilidades.getArgsFuncion(ctx.getText())
+        for var in list:
+            self.f.write("pop " + var.nombre + "\n")
+        self.f.write("pop " + et[1] + "\n")
+        self.visitBloque(ctx.getChild(5))
+        self.f.write("jmp " + et[1] + "\n")
+            
 if __name__ == "__main__":
     pass
-#ARITMETICAS Y LOGICAS ANDANDO?

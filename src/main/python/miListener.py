@@ -38,11 +38,11 @@ class miListener(compiladoresListener):
             if variables[var].find("="):
                 id.inicializado = True
             if self.tablaDeSimbolos.buscarLocal(id.nombre):
-                print("No se agrego el identificador")
+                print("No se declaro el identificador")
                 pass
             else:
                 self.tablaDeSimbolos.agregar(id)
-                print("Se agrego un nuevo identificador")
+                print("Se declaro un nuevo identificador")
                 #print(id.nombre)
         
     def exitAsignacion(self, ctx: compiladoresParser.AsignacionContext):
@@ -56,7 +56,7 @@ class miListener(compiladoresListener):
         if ctxFun:
             varCtx = self.tablaDeSimbolos.buscar(idVariable)
             if varCtx:
-                print("Se encuentra la variable")
+                print("Se encuentra la variable para la asignacion")
                 for id in varCtx.simbolos:
                     if id == idVariable:
                         tDatoVar = varCtx.simbolos[id].tDato
@@ -70,7 +70,7 @@ class miListener(compiladoresListener):
                 else:
                     print("Los tipos de datos de la variable y la funcion no coinciden")
             else:
-                print("No se encuentra la variable")
+                print("No se encuentra la variable para la asignacion")
 
         else:
             varCtx = self.tablaDeSimbolos.buscar(idVariable)
@@ -114,13 +114,14 @@ class miListener(compiladoresListener):
         
     def exitCallFuncion(self, ctx:compiladoresParser.CallFuncionContext):
         #print("Call Funcion")
-        nombreFuncion = ctx.getText().split("(")[0].strip()
+        nombreFuncion = ctx.getChild(0).getText()
         listaPar = ctx.getText().split("(")[1].split(")")[0].split(",")
         
         ctxFuncion = self.tablaDeSimbolos.buscar(nombreFuncion)
 
         if ctxFuncion == None:
             print("No encuentro el prototipo de la funcion")
+            
             return 
             
         print("Encontre el prototipo de la funcion")
@@ -164,11 +165,22 @@ class miListener(compiladoresListener):
                 return
             
             print("El tipo de dato de retorno coincide con el prototipo")
-
             for i in range(len(listArgs)):
-                if listArgs[i].tDato != ctxFun.simbolos[nombreFun].args[0].tDato:
+                if listArgs[i].tDato != ctxFun.simbolos[nombreFun].args[i].tDato:
                     print("Los tipos de datos no coinciden con el prototipo")
                     break
                 print("Los tipos de datos coinciden con el prototipo")
         else: 
             print("No se encontro el nombre pero se agrega")
+            #no esta contenido
+            id = Funcion(nombreFun, tDato, listArgs)
+            if self.tablaDeSimbolos.buscarLocal(id.nombre):
+                print("No se agrego un nuevo identificador PARA EL PROTOTIPO")
+                pass
+            else:
+                self.tablaDeSimbolos.agregar(id)
+                print("Se agrego un nuevo identificador PARA EL PROTOTIPO")
+        
+        #agrego los argumentos de la fun al contexto
+        for i in listArgs:
+            self.tablaDeSimbolos.agregar(i)

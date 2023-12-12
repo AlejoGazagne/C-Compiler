@@ -1,13 +1,31 @@
-int f(int i, int t);
+double restar(double a, double b);
+int suma(int num1, int num2);
 
-int main(){
-    int i = 3, o; 
-    double t = 2;
-    o = f(i, t);
-    i = 5;
-    i = t;
+int main()
+{
+    int num1 = 200;
+    int num2 = 48;
+
+    double numero3 = 28.5;
+    double numero4 = 33.5;
+
+    double resultadoResta = restar(numero4, numero3);
+    int res = suma(num1, num2);
+
+    return 5;
 }
 
-int f(int i, int t){
-    return i * t;
+double restar(double a, double b)
+{
+    int resultado = 0;
+
+    resultado = a - b;
+
+    return resultado;
+}
+
+int suma(int num1, int num2){
+    int res = 0;
+    res = num1 + num2;
+    return res;
 }

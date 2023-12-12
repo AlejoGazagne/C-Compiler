@@ -19,3 +19,44 @@ a = t0
 a = y && 2 || 3
 
 https://github.com/AlejoGazagne/Compilador
+
+
+...
+...
+etiqueta 1 estoy parado
+
+etiqueta 2 saltar
+
+x = ((24200 * a + c % b) + b * 22) && ((a * b + c - 3500) || c * (b + 12 * c));
+t0 = 24200
+t2 = a
+t1 = t0 * t2
+t4 = c
+t6 = b
+t5 = t4 % t6
+t3 = t1 + t5
+t8 = b
+t10 = 22
+t9 = t8 * t10
+t7 = t3 + t9
+t12 = a
+t14 = b
+t13 = t12 * t14
+t16 = c
+t18 = 3500
+t17 = t16 - t18
+t15 = t13 + t17
+t20 = c
+t22 = b
+t24 = 12
+t26 = c
+t25 = t24 * t26
+t23 = t22 + t25
+t21 = t20 * t23
+t19 = t15 || t21
+t11 = t7 && t19
+x = t11
+
+if (r < 8){
+    r = 10
+}

@@ -1,18 +1,48 @@
-t1 = 3
-t0 = t1
-i = t0
-t3 = 2
-t2 = t3
-t = t2
-t5 = f(i,t)
-t4 = t5
-o = t4
-t7 = 5
-t6 = t7
-i = t6
-t9 = t
-t8 = t9
-i = t8
-t11 = i
-t12 = t11 * t
-t10 = t12
+t0 = 200
+num1 = t0
+t1 = 48
+num2 = t1
+t2 = 28.5
+numero3 = t2
+t3 = 33.5
+numero4 = t3
+push numero4
+push numero3
+push l1
+jmp l0
+label l1
+pop resultadoResta
+push num1
+push num2
+push l3
+jmp l2
+label l3
+pop res
+jmp end
+label l0
+pop a
+pop b
+pop l1
+t4 = 0
+resultado = t4
+t5 = a
+t6 = b
+t7 = t5 - t6
+resultado = t7
+t8 = resultado
+push t8
+jmp l1
+label l2
+pop num1
+pop num2
+pop l3
+t9 = 0
+res = t9
+t10 = num1
+t11 = num2
+t12 = t10 + t11
+res = t12
+t13 = res
+push t13
+jmp l3
+label end
