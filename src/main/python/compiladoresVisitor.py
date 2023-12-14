@@ -1,4 +1,4 @@
-# Generated from /home/alejo/Escritorio/antes de romper/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
+# Generated from /home/alejo/Escritorio/raviol/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladoresParser import compiladoresParser
@@ -166,6 +166,16 @@ class compiladoresVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by compiladoresParser#listaArgEnv.
     def visitListaArgEnv(self, ctx:compiladoresParser.ListaArgEnvContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#argProt.
+    def visitArgProt(self, ctx:compiladoresParser.ArgProtContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by compiladoresParser#listArgProt.
+    def visitListArgProt(self, ctx:compiladoresParser.ListArgProtContext):
         return self.visitChildren(ctx)
 
 

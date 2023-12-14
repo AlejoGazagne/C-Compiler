@@ -140,7 +140,12 @@ class miVisitor(compiladoresVisitor):
         self.visitFactor(ctx.getChild(1))
 
         if ctx.getChild(2).getText() != "":
+            aux1 = self._temp.pop()
             self.visitTerm(ctx.getChild(2))
+            aux2 = self._temp.pop()
+            temporal = self.getTemp.next_temporal()
+            self.f.write(temporal + " = " + aux1 + " " + ctx.getChild(2).getChild(0).getText() + " " + aux2 + "\n")
+            self._temp.append(temporal)
 
     def visitFactor(self, ctx: compiladoresParser.FactorContext):
 

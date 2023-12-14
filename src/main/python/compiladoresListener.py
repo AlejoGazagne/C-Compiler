@@ -1,4 +1,4 @@
-# Generated from /home/alejo/Escritorio/antes de romper/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
+# Generated from /home/alejo/Escritorio/raviol/Compilador/src/main/python/compiladores.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .compiladoresParser import compiladoresParser
@@ -293,6 +293,24 @@ class compiladoresListener(ParseTreeListener):
 
     # Exit a parse tree produced by compiladoresParser#listaArgEnv.
     def exitListaArgEnv(self, ctx:compiladoresParser.ListaArgEnvContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#argProt.
+    def enterArgProt(self, ctx:compiladoresParser.ArgProtContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#argProt.
+    def exitArgProt(self, ctx:compiladoresParser.ArgProtContext):
+        pass
+
+
+    # Enter a parse tree produced by compiladoresParser#listArgProt.
+    def enterListArgProt(self, ctx:compiladoresParser.ListArgProtContext):
+        pass
+
+    # Exit a parse tree produced by compiladoresParser#listArgProt.
+    def exitListArgProt(self, ctx:compiladoresParser.ListArgProtContext):
         pass
 
 

@@ -4,6 +4,7 @@ from compiladoresLexer  import compiladoresLexer
 from compiladoresParser import compiladoresParser
 from miListener import miListener
 from miVisitor import miVisitor
+from Optimizador import *
 
 def main(argv):
     archivo = "input/decl.c"
@@ -17,8 +18,12 @@ def main(argv):
     parser.addParseListener(listener)
     tree = parser.programa()
     #print(tree.toStringTree(recog=parser))
+    if listener.error:
+        print("SE DETECTO UN ERROR y no se sigue con el codigo intermedio")
+        return 
     visitante = miVisitor()
     visitante.visit(tree)
-
+    Optimizador.optimizar()
+    
 if __name__ == '__main__':
     main(sys.argv)

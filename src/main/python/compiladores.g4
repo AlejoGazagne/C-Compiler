@@ -127,7 +127,7 @@ factor : ID
        | PA expresionl PC
        ;
 
-prototipeFuncion: tdato ID PA argRec PC ;
+prototipeFuncion: tdato ID PA argProt PC ;
 callFuncion: ID PA argEnv PC;
 defFuncion: tdato ID PA argRec PC bloque;
 
@@ -145,4 +145,12 @@ argEnv: expresion listaArgEnv
 
 listaArgEnv: COMA expresion listaArgEnv
     | 
+    ;
+
+argProt: tdato ID listArgProt
+    |
+    ;
+    
+listArgProt: COMA tdato ID listArgProt
+    |
     ;

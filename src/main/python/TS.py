@@ -31,6 +31,11 @@ class TS():
     def agregarContexto(self):
         TS._pilaCtx.append(Contexto())
         
-    def borrarContexto():
-        TS._pilaCtx[-1].pop()
+    def borrarContexto(self):
+        TS._pilaCtx.pop()
     
+    def actualizar(self, id):
+        TS.buscar(TS, id.nombre).agregarSimbolo(id)
+    
+    def getContextos(self):
+        return TS._pilaCtx

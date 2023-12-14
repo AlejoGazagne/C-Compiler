@@ -19,9 +19,9 @@ class ID(ABC):
     def inicializado(self):
         return self._inicializado
 
-    @property
-    def accedido(self):
-        return self._accedido
+    # @property
+    # def accedido(self):
+    #     return self._accedido
 
     @nombre.setter
     def nombre(self, nombre):
@@ -35,9 +35,9 @@ class ID(ABC):
     def inicializado(self, inicializado):
         self._inicializado = inicializado
 
-    @accedido.setter
-    def accedido(self, accedido):
-        self._accedido = accedido
+    #@accedido.setter
+    def setAccedido(self):
+        self._accedido = True
         
 class Variable(ID):
     pass

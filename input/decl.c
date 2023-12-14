@@ -1,31 +1,12 @@
-double restar(double a, double b);
-int suma(int num1, int num2);
+int f(double x, int u);
 
-int main()
-{
-    int num1 = 200;
-    int num2 = 48;
-
-    double numero3 = 28.5;
-    double numero4 = 33.5;
-
-    double resultadoResta = restar(numero4, numero3);
-    int res = suma(num1, num2);
-
-    return 5;
+int main(int j,double k, int y){
+    int m = 0, o = 7 + 3 * 6;
+    m = f(k, y);
+    int h;
+    o = 6 + j;
 }
 
-double restar(double a, double b)
-{
-    int resultado = 0;
-
-    resultado = a - b;
-
-    return resultado;
-}
-
-int suma(int num1, int num2){
-    int res = 0;
-    res = num1 + num2;
-    return res;
+int f (double x, int u){
+    return x + 2;
 }

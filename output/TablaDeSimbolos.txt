@@ -1,0 +1,17 @@
+	Contexto de la funcion: main
+		int	y	inicializada	accedida
+		double	k	inicializada	accedida
+		int	j	inicializada	accedida
+		int	m	inicializada	no accedida
+		int	o	inicializada	no accedida
+		int	h	inicializada	no accedida
+	Contexto de la funcion: f
+		int	u	inicializada	no accedida
+		double	x	inicializada	accedida
+	Contexto global
+		int	f	inicializada	no accedida
+		Argumentos de la funcion: 
+			double	x	no inicializada	no accedida
+			int	u	no inicializada	no accedida
+		double	x	no inicializada	no accedida
+		int	u	no inicializada	no accedida

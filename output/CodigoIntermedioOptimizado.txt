@@ -1,11 +1,9 @@
-t0 = 0
-m = t0
+m  = 0
 t1 = 7
 t2 = 3
 t3 = 6
 t4 = t2 * t3
-t5 = t1 + t4
-o = t5
+o  = t1 + t4
 push k
 push y
 push l1
@@ -14,8 +12,7 @@ label l1
 pop m
 t6 = 6
 t7 = j
-t8 = t6 + t7
-o = t8
+o  = t6 + t7
 label l0
 pop x
 pop u
